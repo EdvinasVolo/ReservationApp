@@ -18,18 +18,18 @@
 		<form class="form-control" action="#" th:action="@{/clients/save}"
 			th:object="${client}" method="post">
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="name">Name</label> 
+				<label class="form-check-label w-25" for="name">name</label> 
 				<input class="form-check-input w-auto" type="text" th:field="*{name}" id="name"
 					placeholder="Name"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="emeil">emeil</label> 
-				<input class="form-check-input w-auto" type="text" th:field="*{emeil}" id="emeil"
+				<label class="form-check-label w-25" for="email">email</label> 
+				<input class="form-check-input w-auto" type="text" th:field="*{email}" id="email"
 					placeholder="Description"> 
 			</div>
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="phone_number">Phone number</label> 
-				<input class="form-check-input w-auto" type="number" step= "0.01"th:field="*{phone_number}" id="phone_number"
+				<label class="form-check-label w-25" for="phoneNumber">phone number</label> 
+				<input class="form-check-input w-auto" type="number" step= "0.01"th:field="*{phoneNumber}" id="phoneNumber"
 					placeholder="Price"> 
 			</div>
 			 <button type="submit" class="btn btn-primary">Add client</button>
