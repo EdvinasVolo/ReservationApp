@@ -24,7 +24,7 @@ public class BookingController {
 	@PostMapping("/save")
 	public String saveClient(Client client) {
 		clientService.save(client);
-		return "redirect:/clients/create";
+		return "redirect:/service";
 	}
 
 	@GetMapping("/create")
@@ -34,9 +34,9 @@ public class BookingController {
 	
 	@GetMapping("/all")
 	public String getAllDishes(Model model){
-		model.addAttribute("dishes",clientService.getAll());
+		model.addAttribute("client",clientService.getAll());
 		model.addAttribute("hello","Welcome to our restaurant");
-		return "/dishes/list";
+		return "/client/list";
 	}
 
 }
