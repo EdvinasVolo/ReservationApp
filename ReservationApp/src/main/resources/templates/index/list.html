@@ -35,10 +35,10 @@
         <h2> Meniu </h2>
 
     </div>
+<div>
+    <div class="container-fluid" th:switch="${serviceProvider}">
 
-    <div class="container-fluid" th:switch="${dishes}">
-
-        <h2 th:case="null">No dishes yet!</h2>
+        <h2 th:case="null">No service yet!</h2>
 
         <div th:case="*">
 
@@ -51,34 +51,31 @@
                     <tr>
 
                         <th >ID</th>
-
-                        <th>Name</th>
+						 <th >Name</th>
+                        <th>Email</th>
 
                         <th>Description</th>
 
                         <th>Price</th>
-
+						<th >Addres</th>
                     </tr>
 
                 </thead>
 
                 <tbody>
 
-                   <!-- <tr th:each="dish : ${dishes}">
+           
+                    <tr th:each="provider : ${providers}">
 
-                        <td th:text="${dish.id}"></td>
+                        <td th:text="${provider.id}"></td>
 
-                        <td th:text="${dish.name}"></td>
+                        <td th:text="${provider.name}"></td>
+						<td th:text="${provider.email}"></td>
+                        <td th:text="${provider.description}"></td>
 
-                        <td th:text="${dish.description}"></td>
+                        <td th:text="${provider.price}"></td>
+                        <td th:text="${provider.addres}"></td>
 
-                        <td th:text="${dish.price}"></td>
-
-            <!--          <td><a class="btn btn-light" th:href="@{/admin/edit/{id}(id=${student.id})}">Edit</a></td>
-
-                        <td><a class="btn btn-warning" th:href="@{/admin/delete/{id}(id=${student.id})}">Delete</a></td>
-
-                -->
 
                     </tr>
 
@@ -87,10 +84,10 @@
             </table>
 
         </div>
-
+</div>
         <p>
 
-            <a class="btn btn-primary" href="/dishes/create">Add a new dish</a>
+             <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
 
             <a class="btn btn-primary" href="/logout">Log Out</a>
 

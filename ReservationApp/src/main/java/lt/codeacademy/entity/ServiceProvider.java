@@ -12,22 +12,50 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lt.codeacademy.service.ServiceProviderService;
+
 @Entity
 @Table(name="providers")
 public class ServiceProvider {
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 	
-	
+	String name; 
 	String email;
 	long phoneNumber;
 	String addres;
 	String description;
+	double price;
 	
 	@OneToMany( cascade = CascadeType.ALL)
 	List<ServiceProvider> providers = new ArrayList<ServiceProvider>();
 	
+	public List<ServiceProvider> getProviders() {
+		return providers;
+	}
+
+	public void setProviders(List<ServiceProvider> providers) {
+		this.providers = providers;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 	public ServiceProvider() {
 		super();
 	}
@@ -72,28 +100,48 @@ public class ServiceProvider {
 		this.description = description;
 	}
 
-	public ServiceProvider(int id, String email, long phoneNumber, String addres, String description) {
+	
+
+	
+
+	public ServiceProvider(int id, String name, String email, long phoneNumber, String addres, String description,
+			double price, List<ServiceProvider> providers) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.addres = addres;
 		this.description = description;
+		this.price = price;
+		this.providers = providers;
 	}
+	
 
-	public ServiceProvider(String email, long phoneNumber, String addres, String description) {
+	public ServiceProvider(String name, String email, long phoneNumber, String addres, String description,
+			double price, List<ServiceProvider> providers) {
 		super();
+		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.addres = addres;
 		this.description = description;
+		this.price = price;
+		this.providers = providers;
 	}
 
 	@Override
 	public String toString() {
-		return "ServiceProvider [id=" + id + ", email=" + email + ", phoneNumber=" + phoneNumber + ", addres=" + addres
-				+ ", description=" + description + "]";
+		return "ServiceProvider [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", addres=" + addres + ", description=" + description + ", price=" + price + ", providers="
+				+ providers + "]";
 	}
+	public ServiceProvider(String name) {
+		this.name = name;
+	}
+	
+
+	
 	
 	
 }
