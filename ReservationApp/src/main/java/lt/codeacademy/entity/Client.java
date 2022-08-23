@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import lt.codeacademy.repository.ClientRepository;
+
 
 
 @Entity
@@ -26,9 +30,11 @@ public class Client {
 	
 	@OneToMany( cascade = CascadeType.ALL)
 	List<Client> clients = new ArrayList<Client>();
+	
+
 
 	public Client() {
-		super();
+	
 	}
 
 	public int getId() {
@@ -76,7 +82,7 @@ public class Client {
 
 
 	public Client(String name, String email, long phoneNumber, List<Client> clients) {
-		super();
+	
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -84,7 +90,7 @@ public class Client {
 	}
 
 	public Client(int id, String name, String email, long phoneNumber, List<Client> clients) {
-		super();
+	
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -96,6 +102,13 @@ public class Client {
 	public String toString() {
 		return "Client [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ ", clients=" + clients + "]";
+	}
+
+	public Client(String name, String email, long phoneNumber) {
+	
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
 	}
 	
 

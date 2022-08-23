@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 <title>Reservation</title>
@@ -20,21 +20,21 @@
 			<div class="mb-3 mt-3 w-auto">
 				<label class="form-check-label w-25" for="name">Name</label> 
 				<input class="form-check-input w-auto" type="text" th:field="*{name}" id="name"
-					placeholder="Name"> 
-			</div>
-			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="email">Email</label> 
+					placeholder=""> 
+	</div>	
+	 		<div class="mb-3 mt-3 w-auto">
+				<label class="form-check-label w-25" for="email">Emeil'as</label> 
 				<input class="form-check-input w-auto" type="text" th:field="*{email}" id="email"
-					placeholder="Email"> 
-			</div>
+					placeholder=""> 
+		</div>	
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="phoneNumber">Phone number</label> 
-				<input class="form-check-input w-auto" type="number" th:field="*{phoneNumber}" id="phoneNumber"
-					placeholder="PhoneNumber"> 
-			</div>
+				<label class="form-check-label w-25" for="phoneNumber">Phone Number</label> 
+				<input class="form-check-input w-auto" type="number" step= "0.01"th:field="*{phoneNumber}" id="phoneNumber"
+					placeholder=""> 
+			</div>  
 			 <button type="submit" class="btn btn-primary">Add client</button>
 		</form>
 	</div>
 
 </body>
-</html>
+</html> 
