@@ -14,7 +14,7 @@ import lt.codeacademy.service.ClientService;
 
 
 
-@Controller
+@RestController
 @RequestMapping("/booking")
 public class BookingController {
 	
