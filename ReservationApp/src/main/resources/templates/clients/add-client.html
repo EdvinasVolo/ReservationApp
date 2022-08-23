@@ -15,23 +15,23 @@
 	<div class="container mt-3">
 		<h2>Please enter your information</h2>
 
-		<form class="form-control" action="#" th:action="@{/clients/save}"
+		<form class="form-control" action="#" th:action="@{/client/save}"
 			th:object="${client}" method="post">
 			<div class="mb-3 mt-3 w-auto">
 				<label class="form-check-label w-25" for="name">Name</label> 
 				<input class="form-check-input w-auto" type="text" th:field="*{name}" id="name"
-					placeholder="Name"> 
-			</div>
+					placeholder=""> 
+	</div>	
+	 		<div class="mb-3 mt-3 w-auto">
+				<label class="form-check-label w-25" for="email">Emeil'as</label> 
+				<input class="form-check-input w-auto" type="text" th:field="*{email}" id="email"
+					placeholder=""> 
+		</div>	
 			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="emeil">emeil</label> 
-				<input class="form-check-input w-auto" type="text" th:field="*{emeil}" id="emeil"
-					placeholder="Description"> 
-			</div>
-			<div class="mb-3 mt-3 w-auto">
-				<label class="form-check-label w-25" for="phone_number">Phone number</label> 
-				<input class="form-check-input w-auto" type="number" step= "0.01"th:field="*{phone_number}" id="phone_number"
-					placeholder="Price"> 
-			</div>
+				<label class="form-check-label w-25" for="phoneNumber">Phone Number</label> 
+				<input class="form-check-input w-auto" type="number" step= "0.01"th:field="*{phoneNumber}" id="phoneNumber"
+					placeholder=""> 
+			</div>  
 			 <button type="submit" class="btn btn-primary">Add client</button>
 		</form>
 	</div>

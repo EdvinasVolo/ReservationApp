@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.entity.Client;
+import lt.codeacademy.repository.ClientRepository;
 import lt.codeacademy.service.ClientService;
 
 
@@ -20,6 +21,9 @@ public class BookingController {
 	
 	@Autowired
 	ClientService clientService;
+	
+	@Autowired
+	ClientRepository clientRepository;
 	
 	@PostMapping("/save")
 	public String saveClient(Client client) {
