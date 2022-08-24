@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,10 +41,17 @@ public class ServiceContoller {
 		return "redirect:/service";
 	}
 	
-	@GetMapping("/edit")
-	public String editProvider() {
-		return "redirect:/admin";		
+	@GetMapping("/edit/{id}")
+	public String editProvider(@PathVariable("id") int id, Model model) {
+		ServiceProvider serviceProvider = serviceService.findById(id);   
+		model.addAttribute("provider", serviceProvider);
+		return "/index/review";		
 	}
 	
+//	@PostMapping("/updateProvider/{id}"){
+//	public String updateProvider(@PathVariable("id"), Model model) {
+//		
+//	}
+//	
 	
-}
+	}
