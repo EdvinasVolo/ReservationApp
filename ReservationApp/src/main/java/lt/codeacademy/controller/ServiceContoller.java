@@ -2,6 +2,7 @@ package lt.codeacademy.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,18 +22,28 @@ public class ServiceContoller {
 	
 	
 	@GetMapping("")
-	public String showList(ServiceProvider serviceProvider) {
-		serviceService.findAll();
-		return "/index/list";
-		
+	public String showList(Model model) {
+		model.addAttribute("providers", serviceService.findAllProvider());
+		return "/index/list";	
 	}
+	
+	
 	@GetMapping("/create")
     public String showCreateForm(ServiceProvider serviceProvider) {
         return "/index/addProvider";
     }
+	
+	
 	@PostMapping("/save")
 	public String saveClient(ServiceProvider serviceProvider) {
 		serviceService.save(serviceProvider);
 		return "redirect:/service";
 	}
+	
+	@GetMapping("/edit")
+	public String editProvider() {
+		return "redirect:/admin";		
+	}
+	
+	
 }
