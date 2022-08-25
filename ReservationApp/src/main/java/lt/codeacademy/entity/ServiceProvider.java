@@ -84,12 +84,12 @@ public class ServiceProvider {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getAddres() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddres(String addres) {
-		this.address = addres;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getDescription() {
@@ -104,27 +104,27 @@ public class ServiceProvider {
 
 	
 
-	public ServiceProvider(int id, String name, String email, long phoneNumber, String addres, String description,
+	public ServiceProvider(int id, String name, String email, long phoneNumber, String address, String description,
 			double price, List<ServiceProvider> providers) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.address = addres;
+		this.address = address;
 		this.description = description;
 		this.price = price;
 		this.providers = providers;
 	}
 	
 
-	public ServiceProvider(String name, String email, long phoneNumber, String addres, String description,
+	public ServiceProvider(String name, String email, long phoneNumber, String address, String description,
 			double price, List<ServiceProvider> providers) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.address = addres;
+		this.address = address;
 		this.description = description;
 		this.price = price;
 		this.providers = providers;
@@ -133,7 +133,7 @@ public class ServiceProvider {
 	@Override
 	public String toString() {
 		return "ServiceProvider [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", addres=" + address + ", description=" + description + ", price=" + price + ", providers="
+				+ ", address=" + address + ", description=" + description + ", price=" + price + ", providers="
 				+ providers + "]";
 	}
 	public ServiceProvider(String name) {
