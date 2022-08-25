@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lt.codeacademy.entity.Client;
 import lt.codeacademy.entity.ServiceProvider;
-import lt.codeacademy.learn.SpringBootStart.entities.Student;
+
+import lt.codeacademy.repository.ServiceProviderRepository;
 import lt.codeacademy.service.ClientService;
 import lt.codeacademy.service.ServiceProviderService;
 
@@ -21,6 +22,9 @@ import lt.codeacademy.service.ServiceProviderService;
 public class ServiceContoller {
 	@Autowired
 	ServiceProviderService serviceService;
+	
+	@Autowired
+	ServiceProviderRepository serviceRepository;
 
 
 
@@ -64,8 +68,14 @@ public class ServiceContoller {
 	serviceService.save(serviceProvider);
 	    return "redirect:/service";
 	}
+	@GetMapping("/delete/{id}")
+	public String deleteProvider(@PathVariable("id") int id, Model model) {
+		ServiceProviderRepository provider = serviceRepository.findById(id)
+	      .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		serviceRepository.delete((ServiceProvider) provider);
+	    return "redirect:/service";
+	}
 }
-	
 //	@PostMapping("/update/{id}")
 //	public String updateUser(@PathVariable("id") int id, Student student,  Model model) {
 //	    if (result.hasErrors()) {
