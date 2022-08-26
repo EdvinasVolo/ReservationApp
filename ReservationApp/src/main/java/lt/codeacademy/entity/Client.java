@@ -27,6 +27,8 @@ public class Client {
 	String name;
 	String email;
 	long phoneNumber;
+    long password;
+    
 	
 	@OneToMany( cascade = CascadeType.ALL)
 	List<Client> clients = new ArrayList<Client>();

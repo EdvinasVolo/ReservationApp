@@ -38,6 +38,7 @@ public class ServiceProvider implements ServiceProviderRepository {
 	String address;
 	String description;
 	double price;
+	long password;
 	
 	@OneToMany( cascade = CascadeType.ALL)
 	List<ServiceProvider> providers = new ArrayList<ServiceProvider>();
