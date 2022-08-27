@@ -5,31 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import lt.codeacademy.entity.ServiceProvider;
-import lt.codeacademy.repository.ServiceProviderRepository;
+import lt.codeacademy.entity.Provider;
+import lt.codeacademy.repository.ProviderRepository;
 
 @Service
-public class ServiceProviderService {
+public class ProviderService {
 	
 	@Autowired
-	ServiceProviderRepository providerRepository;
+	ProviderRepository providerRepository;
 	
 	
 	
-	public ServiceProvider save(ServiceProvider serviceProvider) {
+	public Provider save(Provider serviceProvider) {
 		return providerRepository.save(serviceProvider);
 
 	}
 	
 	
-	public List<ServiceProvider> findAllProvider() {
+	public List<Provider> findAllProvider() {
 		return providerRepository.findAll();
 
 	}
 
 
-	public ServiceProvider findById(int id) {
-		ServiceProvider serviceProvider =  providerRepository.findById(id)
+	public Provider findById(int id) {
+		Provider serviceProvider =  providerRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid provider Id:" + id));
 		return serviceProvider;
 	}

@@ -10,7 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import lt.codeacademy.controller.ServiceContoller;
-import lt.codeacademy.service.ServiceProviderService;
+import lt.codeacademy.service.ProviderService;
 
 
 @ExtendWith(SpringExtension.class)
@@ -18,7 +18,7 @@ import lt.codeacademy.service.ServiceProviderService;
 public class ServiceControllerTests {
 
 	 @MockBean
-	 ServiceProviderService serviceProviderService;
+	 ProviderService serviceProviderService;
 	 
 	 @Autowired
 	    MockMvc mockMvc;

@@ -1,33 +1,40 @@
 package lt.codeacademy.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import lt.codeacademy.repository.ClientRepository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 
 @Entity
 @Table(name="clients")
-public class Client {
+public class Client implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private long id;
 	
-	String name;
-	String email;
-	long phoneNumber;
-    long password;
+	private String usernamer;
+	private String name;
+	private String email;
+	private long phoneNumber;
+	private String password;
+	@Enumerated(EnumType.STRING)
+	private ClientRole clientRole;
     
 	
 	@OneToMany( cascade = CascadeType.ALL)
@@ -39,7 +46,7 @@ public class Client {
 	
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -83,6 +90,30 @@ public class Client {
 
 
 
+	public String getUsernamer() {
+		return email;
+	}
+
+	public void setUsernamer(String usernamer) {
+		this.usernamer = usernamer;
+	}
+
+	public ClientRole getClientRole() {
+		return clientRole;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setClientRole(ClientRole clientRole) {
+		this.clientRole = clientRole;
+	}
+
 	public Client(String name, String email, long phoneNumber, List<Client> clients) {
 	
 		this.name = name;
@@ -103,7 +134,19 @@ public class Client {
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", clients=" + clients + "]";
+				+ ", password=" + password + ", clients=" + clients + "]";
+	}
+	
+
+	public Client(String name, String email, long phoneNumber, String password, ClientRole clientRole,
+			List<Client> clients) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.clientRole = clientRole;
+		this.clients = clients;
 	}
 
 	public Client(String name, String email, long phoneNumber) {
@@ -111,6 +154,59 @@ public class Client {
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+	}
+	
+
+	public Client(long id, String name, String email, long phoneNumber, String password, List<Client> clients) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.clients = clients;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(clientRole.name());
+		return Collections.singletonList(authority);
+	}
+
+	@Override
+	public String getPassword() {
+		return  password;
+	}
+
+
+
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public String getUsername() {
+		return null;
 	}
 	
 

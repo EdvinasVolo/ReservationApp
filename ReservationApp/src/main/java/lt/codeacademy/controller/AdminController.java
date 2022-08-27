@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import lt.codeacademy.entity.ServiceProvider;
+import lt.codeacademy.entity.Provider;
 import lt.codeacademy.service.ClientService;
-import lt.codeacademy.service.ServiceProviderService;
+import lt.codeacademy.service.ProviderService;
 
 
 @Controller
@@ -21,7 +21,7 @@ public class AdminController {
 	private ClientService clientService; 
 
 	@Autowired
-	ServiceProviderService serviceProviderService;
+	ProviderService serviceProviderService;
 
 
 	//	
@@ -34,7 +34,7 @@ public class AdminController {
 
 	@GetMapping("/review/{id}")
 	public String showOrder(@PathVariable("id") int id, Model model) {
-		ServiceProvider serviceProvider = serviceProviderService.findById(id);   
+		Provider serviceProvider = serviceProviderService.findById(id);   
 		model.addAttribute("provider", serviceProvider);
 		return "/index/review";
 	}

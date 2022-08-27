@@ -3,10 +3,10 @@ package lt.codeacademy.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import lt.codeacademy.entity.ServiceProvider;
+import lt.codeacademy.entity.Provider;
 
 
 @Repository
-public interface ServiceProviderRepository extends JpaRepository <ServiceProvider, Integer>{
+public interface ProviderRepository extends JpaRepository <Provider, Integer>{
 
 }

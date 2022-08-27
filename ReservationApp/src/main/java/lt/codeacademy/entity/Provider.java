@@ -20,34 +20,55 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 
-import lt.codeacademy.repository.ServiceProviderRepository;
-import lt.codeacademy.service.ServiceProviderService;
+import lt.codeacademy.repository.ProviderRepository;
+import lt.codeacademy.service.ProviderService;
 
 @Entity
 @Table(name="providers")
-public class ServiceProvider implements ServiceProviderRepository {
+public class Provider implements ProviderRepository {
 	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private long id;
 	
-	String name; 
-	String email;
-	long phoneNumber;
-	String address;
-	String description;
-	double price;
-	long password;
+	private String name; 
+	private String email;
+	private long phoneNumber;
+	private String address;
+	private String description;
+	private double price;
+	private long password;
 	
+	public Provider(String name, String email, long phoneNumber, String address, String description, double price,
+			long password, List<Provider> providers) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.description = description;
+		this.price = price;
+		this.password = password;
+		this.providers = providers;
+	}
+
+	public long getPassword() {
+		return password;
+	}
+
+	public void setPassword(long password) {
+		this.password = password;
+	}
+
 	@OneToMany( cascade = CascadeType.ALL)
-	List<ServiceProvider> providers = new ArrayList<ServiceProvider>();
+	List<Provider> providers = new ArrayList<Provider>();
 	
-	public List<ServiceProvider> getProviders() {
+	public List<Provider> getProviders() {
 		return providers;
 	}
 
-	public void setProviders(List<ServiceProvider> providers) {
+	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
 	}
 
@@ -66,11 +87,11 @@ public class ServiceProvider implements ServiceProviderRepository {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public ServiceProvider() {
+	public Provider() {
 		super();
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -114,8 +135,8 @@ public class ServiceProvider implements ServiceProviderRepository {
 
 	
 
-	public ServiceProvider(int id, String name, String email, long phoneNumber, String address, String description,
-			double price, List<ServiceProvider> providers) {
+	public Provider(int id, String name, String email, long phoneNumber, String address, String description,
+			double price, List<Provider> providers) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -128,8 +149,8 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 	
 
-	public ServiceProvider(String name, String email, long phoneNumber, String address, String description,
-			double price, List<ServiceProvider> providers) {
+	public Provider(String name, String email, long phoneNumber, String address, String description,
+			double price, List<Provider> providers) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -146,30 +167,30 @@ public class ServiceProvider implements ServiceProviderRepository {
 				+ ", address=" + address + ", description=" + description + ", price=" + price + ", providers="
 				+ providers + "]";
 	}
-	public ServiceProvider(String name) {
+	public Provider(String name) {
 		this.name = name;
 	}
 
 	@Override
-	public List<ServiceProvider> findAll() {
+	public List<Provider> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ServiceProvider> findAll(Sort sort) {
+	public List<Provider> findAll(Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ServiceProvider> findAllById(Iterable<Integer> ids) {
+	public List<Provider> findAllById(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> List<S> saveAll(Iterable<S> entities) {
+	public <S extends Provider> List<S> saveAll(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -181,19 +202,19 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 
 	@Override
-	public <S extends ServiceProvider> S saveAndFlush(S entity) {
+	public <S extends Provider> S saveAndFlush(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> List<S> saveAllAndFlush(Iterable<S> entities) {
+	public <S extends Provider> List<S> saveAllAndFlush(Iterable<S> entities) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteAllInBatch(Iterable<ServiceProvider> entities) {
+	public void deleteAllInBatch(Iterable<Provider> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -211,49 +232,49 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 
 	@Override
-	public ServiceProvider getOne(Integer id) {
+	public Provider getOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ServiceProvider getById(Integer id) {
+	public Provider getById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ServiceProvider getReferenceById(Integer id) {
+	public Provider getReferenceById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> List<S> findAll(Example<S> example) {
+	public <S extends Provider> List<S> findAll(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> List<S> findAll(Example<S> example, Sort sort) {
+	public <S extends Provider> List<S> findAll(Example<S> example, Sort sort) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Page<ServiceProvider> findAll(Pageable pageable) {
+	public Page<Provider> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> S save(S entity) {
+	public <S extends Provider> S save(S entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Optional<ServiceProvider> findById(Integer id) {
+	public Optional<Provider> findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -277,7 +298,7 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 
 	@Override
-	public void delete(ServiceProvider entity) {
+	public void delete(Provider entity) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -289,7 +310,7 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 
 	@Override
-	public void deleteAll(Iterable<? extends ServiceProvider> entities) {
+	public void deleteAll(Iterable<? extends Provider> entities) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -301,31 +322,31 @@ public class ServiceProvider implements ServiceProviderRepository {
 	}
 
 	@Override
-	public <S extends ServiceProvider> Optional<S> findOne(Example<S> example) {
+	public <S extends Provider> Optional<S> findOne(Example<S> example) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> Page<S> findAll(Example<S> example, Pageable pageable) {
+	public <S extends Provider> Page<S> findAll(Example<S> example, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <S extends ServiceProvider> long count(Example<S> example) {
+	public <S extends Provider> long count(Example<S> example) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public <S extends ServiceProvider> boolean exists(Example<S> example) {
+	public <S extends Provider> boolean exists(Example<S> example) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public <S extends ServiceProvider, R> R findBy(Example<S> example,
+	public <S extends Provider, R> R findBy(Example<S> example,
 			Function<FetchableFluentQuery<S>, R> queryFunction) {
 		// TODO Auto-generated method stub
 		return null;
