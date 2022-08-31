@@ -30,12 +30,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/anonymous*").anonymous()
         .antMatchers("/login*").permitAll()
-        .anyRequest().authenticated()
+        .anyRequest().permitAll()
         .and()
         .formLogin()
-        //.loginPage("/login.html")
+        .loginPage("/login")
         .loginProcessingUrl("/perform_login")
-        .defaultSuccessUrl("/service", true)
+        .defaultSuccessUrl("/service", true).permitAll()
       ;
     }
     @Bean 

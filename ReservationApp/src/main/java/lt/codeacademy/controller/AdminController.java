@@ -24,12 +24,12 @@ public class AdminController {
 	ProviderService serviceProviderService;
 
 
-	//	
-	//	@GetMapping("/index")
-	//	public String showUserList(Model model) {
-	//	    model.addAttribute("clients", clientService.findAll());
-	//	    return "admin/index";
-	//	}
+//		
+//		@GetMapping("/index")
+//		public String showUserList(Model model) {
+//		    model.addAttribute("clients", clientService.findAll());
+//		    return "admin/index";
+//		}
 
 
 	@GetMapping("/review/{id}")
