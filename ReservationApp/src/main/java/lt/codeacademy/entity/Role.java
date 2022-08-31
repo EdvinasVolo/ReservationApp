@@ -1,7 +1,7 @@
 package lt.codeacademy.entity;
 
 
-public enum ClientRole {
+public enum Role {
 	USER,
 	ADMIN
 

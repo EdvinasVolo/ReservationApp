@@ -34,7 +34,7 @@ public class Client implements UserDetails{
 	private long phoneNumber;
 	private String password;
 	@Enumerated(EnumType.STRING)
-	private ClientRole clientRole;
+	private Role clientRole;
     
 	
 	@OneToMany( cascade = CascadeType.ALL)
@@ -98,7 +98,7 @@ public class Client implements UserDetails{
 		this.usernamer = usernamer;
 	}
 
-	public ClientRole getClientRole() {
+	public Role getClientRole() {
 		return clientRole;
 	}
 
@@ -110,7 +110,7 @@ public class Client implements UserDetails{
 		this.password = password;
 	}
 
-	public void setClientRole(ClientRole clientRole) {
+	public void setClientRole(Role clientRole) {
 		this.clientRole = clientRole;
 	}
 
@@ -138,7 +138,7 @@ public class Client implements UserDetails{
 	}
 	
 
-	public Client(String name, String email, long phoneNumber, String password, ClientRole clientRole,
+	public Client(String name, String email, long phoneNumber, String password, Role clientRole,
 			List<Client> clients) {
 		super();
 		this.name = name;
