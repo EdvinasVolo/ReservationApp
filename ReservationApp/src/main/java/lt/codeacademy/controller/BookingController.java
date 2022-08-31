@@ -40,7 +40,7 @@ public class BookingController {
 	public String getAllDishes(Model model){
 		model.addAttribute("client",clientService.getAll());
 		model.addAttribute("hello","Welcome to our restaurant");
-		return "/client/list";
+		return "/clients/list";
 	}
 
 }

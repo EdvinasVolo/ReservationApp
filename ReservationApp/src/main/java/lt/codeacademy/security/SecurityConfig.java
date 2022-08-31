@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .formLogin()
         //.loginPage("/login.html")
         .loginProcessingUrl("/perform_login")
-        .defaultSuccessUrl("/index/review.html", true)
+        .defaultSuccessUrl("/service", true)
       ;
     }
     @Bean 

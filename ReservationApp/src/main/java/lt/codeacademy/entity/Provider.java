@@ -30,7 +30,7 @@ public class Provider implements ProviderRepository {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	
 	private String name; 
 	private String email;
@@ -91,7 +91,7 @@ public class Provider implements ProviderRepository {
 		super();
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -285,11 +285,7 @@ public class Provider implements ProviderRepository {
 		return false;
 	}
 
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public void deleteById(Integer id) {
@@ -333,11 +329,7 @@ public class Provider implements ProviderRepository {
 		return null;
 	}
 
-	@Override
-	public <S extends Provider> long count(Example<S> example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	@Override
 	public <S extends Provider> boolean exists(Example<S> example) {
@@ -350,6 +342,18 @@ public class Provider implements ProviderRepository {
 			Function<FetchableFluentQuery<S>, R> queryFunction) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public <S extends Provider> long count(Example<S> example) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 
