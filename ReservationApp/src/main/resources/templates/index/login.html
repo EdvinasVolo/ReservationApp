@@ -1,63 +1,121 @@
-<!DOCTYPE html>   
-<html>   
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Login Page </title>  
-<style>   
-Body {  
-  font-family: Calibri, Helvetica, sans-serif;  
-  background-color: pink;  
-}  
-button {   
-       background-color: #4CAF50;   
-       width: 100%;  
-        color: orange;   
-        padding: 15px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;   
-         }   
- form {   
-        border: 3px solid #f1f1f1;   
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid green;   
-        box-sizing: border-box;   
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }   
-  .cancelbtn {   
-        width: auto;   
-        padding: 10px 18px;  
-        margin: 10px 5px;  
-    }   
-        
-     
- .container {   
-        padding: 25px;   
-        background-color: lightblue;  
-    }   
-</style>   
-</head>    
-<body>    
-    <center> <h1> Booking Login Form </h1> </center>   
-    <form>  
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <div class="container">   
-            <label>Username : </label>   
-            <input type="text" placeholder="Enter Username" name="username" required>  
-            <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit" >Login</button> 
-            <button type="button" th:href="@{/booking/create}">User Signup</button> 
-            <button type="button" th:href="@{/service/create}">Provider Signup</button> 
-	</div>
-    </form>     
-</body>     
-</html>  
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<style>
+.cover {
+    width: 400px;
+    margin: auto;
+}
+.mastfoot {
+    padding-top: 0px;
+    text-align: center;
+    margin: auto;
+}
+</style>
+
+</head>
+<body>
+<div class="cover-container">
+    <div class="masthead clearfix">
+        <div class="inner">
+            <h3 class="masthead-brand"></h3>
+            <ul class="nav masthead-nav">
+            </ul>
+        </div>
+    </div>
+    <div class="inner cover">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Please Sign Up It's free and always will be.</h3>
+            </div>
+            <div class="panel-body">
+                <!-- tabs -->
+                <ul id="dTab" class="nav nav-tabs">
+                    <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li>
+                    <li><a href="#pane2" data-toggle="tab">Login</a></li>
+                    <li><a href="#pane3" data-toggle="tab">3Tabas</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="pane1" class="tab-pane fade in active">
+                        <!-- Register Username -->
+                        <form action="" method="POST">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="control-label" for="username">Username</label>
+                                    <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <!-- E-mail -->
+                                    <label class="control-label" for="email">E-mail</label>
+                                    <input type="text" id="email" name="email" placeholder="Please provide your E-mail" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <!-- Password-->
+                                    <label class="control-label" for="password">Password</label>
+                                    <input type="password" id="password" name="password" placeholder="Password should be at least 4 characters" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <!-- Password -->
+                                    <label class="control-label" for="password_confirm">Password (Confirm)</label>
+                                    <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="form-control" />
+                                </div>
+                                <button class="btn btn-success">Register</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="pane2" class="tab-pane fade">
+                        <!-- login -->
+                        <form role="form" action="" method="POST">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+
+                            <button type="reset" class="btn btn-success" id="forgetBtn">Forget Password</button>
+                        </form>
+                        <!-- login-ends-->
+                    </div>
+                    <div id="pane3" class="tab-pane fade">
+                        <!-- password forget -->
+                        <form role="form" action="" method="POST">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Request a password reset. Enter your email" />
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Reset Password</button>
+                            <button type="reset" class="btn btn-success" id="loginBtn">Login</button>
+                        </form>
+                        <!-- password forget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+$(document).ready(function () {
+    $("#forgetBtn").click(function () {
+        $("#dTab li:eq(2) a").tab("show");
+        $(".tab-content div.active").removeClass("active in");
+        $(".tab-content").find("#pane3").addClass("active in");
+    });
+    $("#loginBtn").click(function () {
+        $("#dTab li:eq(1) a").tab("show");
+        $(".tab-content div.active").removeClass("active in");
+        $(".tab-content").find("#pane2").addClass("active in");
+    });
+});
+</script>
+
+</body>
+</html>
