@@ -75,6 +75,12 @@ public class ServiceContoller {
 		serviceRepository.delete((Provider) provider);
 	    return "redirect:/service";
 	}
+	
+	@GetMapping("/reservation")
+	public String reservation(Model model) {
+		return "/index/reservation";
+	}
+	
 }
 //	@PostMapping("/update/{id}")
 //	public String updateUser(@PathVariable("id") int id, Student student,  Model model) {

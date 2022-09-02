@@ -47,6 +47,7 @@
                         <td th:text="${provider.address}"></td>
  <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
 <td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
+<td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
                     </tr>
                 </tbody>
             </table>
