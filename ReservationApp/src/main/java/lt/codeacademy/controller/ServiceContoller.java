@@ -31,7 +31,7 @@ public class ServiceContoller {
 	@GetMapping("")
 	public String showList(Model model) {
 		model.addAttribute("providers", serviceService.findAllProvider());
-		return "/index/list";	
+		return "/index/Home";	
 	}
 
 
