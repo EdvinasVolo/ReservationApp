@@ -54,9 +54,7 @@ public class ServiceContoller {
 		return "/index/review";		
 	}
 
-	//	@PostMapping("/updateProvider/{id}")
-	//	public String updateProvider(@PathVariable("id"), Model model) {		
-	//}
+	
 
 	@PostMapping("/updateProvider/{id}")
 	public String updateProvider(@PathVariable("id") int id, Provider serviceProvider, BindingResult result,

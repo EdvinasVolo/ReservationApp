@@ -6,9 +6,8 @@
     <meta name="description" content="">
     <title>Home</title>
     <link rel="stylesheet" href="CSS/nicepage.css" media="screen">
-<link rel="stylesheet" href="CSS/Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="/index/jquery.js"  ></script>
-    <script class="u-script" type="text/javascript" src="/index/nicepage.js"  ></script>
+    <link rel="stylesheet" href="CSS/Home.css" media="screen">
+  
     <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
@@ -32,57 +31,46 @@
           <img src="CSS/logo.png" class="u-logo-image u-logo-image-2">
         </a>
       </div></header> 
+      
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-a1c0" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
       <div class="u-clearfix u-sheet u-sheet-1">
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
-            <colgroup>
-              <col width="4.2%">
-              <col width="12.1%">
-              <col width="12%">
-              <col width="17.4%">
-              <col width="15.4%">
-              <col width="12.9%">
-              <col width="25.9%">
-            </colgroup>
+            <thead>
+            <tr>
+              
+              <th >ID</th>
+              <th >Name</th>
+              <th>Email</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th >Address</th>
+              
+
+          </tr>
+          </thead>
             <thead class="u-black u-table-header u-table-header-1">
               <tr th:each="provider : ${providers}">
                         <td th:text="${provider.id}"></td>
                         <td th:text="${provider.name}"></td>
-						<td th:text="${provider.email}"></td>
+						            <td th:text="${provider.email}"></td>
                         <td th:text="${provider.description}"></td>
                         <td th:text="${provider.price}"></td>
                         <td th:text="${provider.address}"></td>
- <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
-<td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
-<td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
+        <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
+        <td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
+        <td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
             </tbody>
           </table>
+          <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
+          <a class="btn btn-primary" href="/logout">Log Out</a>
         </div>
-         <p>
-             <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
-            <a class="btn btn-primary" href="/logout">Log Out</a>
+         
             
-            
-        </p>
-       
+      
       </div>
-    </section>
-    
-    
-    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-f346"><div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
-      </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
-        <span>HTML Template</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="https://nicepage.studio" target="_blank">
-        <span>Free Website Builder</span>
-      </a>. 
+
     </section>
   
-</body></html>
+</body>
+</html>
