@@ -36,41 +36,42 @@
             <div class="panel-body">
                 <!-- tabs -->
                 <ul id="dTab" class="nav nav-tabs">
-                    <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li>
+                <!--    <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li> -->  
                     <li><a href="#pane2" data-toggle="tab">Login</a></li>
-                    <li><a href="#pane3" data-toggle="tab">3Tabas</a></li>
+             <!--       <li><a href="#pane3" data-toggle="tab" >3Tabas</a></li> -->  
                 </ul>
                 <div class="tab-content">
                     <div id="pane1" class="tab-pane fade in active">
                         <!-- Register Username -->
-                        <form action="" method="POST">
-                            <fieldset>
-                                <div class="form-group">
+                      <!--     <form action="/booking/create" method="POST">
+                          <fieldset>
+                               <div class="form-group">
                                     <label class="control-label" for="username">Username</label>
                                     <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <!-- E-mail -->
+                                    <!-- E-mail 
                                     <label class="control-label" for="email">E-mail</label>
                                     <input type="text" id="email" name="email" placeholder="Please provide your E-mail" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <!-- Password-->
+                                    <!-- Password
                                     <label class="control-label" for="password">Password</label>
                                     <input type="password" id="password" name="password" placeholder="Password should be at least 4 characters" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <!-- Password -->
+                                    <!-- Password 
                                     <label class="control-label" for="password_confirm">Password (Confirm)</label>
                                     <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="form-control" />
-                                </div>
-                                <button class="btn btn-success">Register</button>
-                            </fieldset>
-                        </form>
+                                </div> 
+                                <button type="submit" class="btn btn-success"  >Register</button>
+                            </fieldset>  
+                             <button type="submit" class="btn btn-success"  >Register</button>  
+                        </form>-->
                     </div>
                     <div id="pane2" class="tab-pane fade">
                         <!-- login -->
-                        <form role="form" action="" method="POST">
+                        <form class="form-signin" th:action="@{/process-login}"  method="POST">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
@@ -79,7 +80,10 @@
                                 <label for="exampleInputPassword1">Password</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                             </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                 
+                             
+                            <button type="submit" class="btn btn-success">Log-in</button>
+                            
 
                             <button type="reset" class="btn btn-success" id="forgetBtn">Forget Password</button>
                         </form>

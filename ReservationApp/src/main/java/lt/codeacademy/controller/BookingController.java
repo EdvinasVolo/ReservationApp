@@ -35,6 +35,10 @@ public class BookingController {
     public String showCreateForm(Client client) {
         return "/clients/add-client";
     }
+	@PostMapping("/create")
+    public String showForm(Client client) {
+        return "/clients/add-client";
+    }
 	
 	@GetMapping("/all")
 	public String getAllDishes(Model model){

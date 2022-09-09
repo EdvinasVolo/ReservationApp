@@ -1,6 +1,7 @@
 package lt.codeacademy.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -10,7 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +25,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 
 import lt.codeacademy.repository.ProviderRepository;
-import lt.codeacademy.service.ProviderService;
+
 
 @Entity
 @Table(name="providers")
@@ -39,6 +43,14 @@ public class Provider implements ProviderRepository {
 	private String description;
 	private double price;
 	private long password;
+	@ManyToMany 
+    @JoinTable( 
+        name = "providers_roles", 
+        joinColumns = @JoinColumn(
+          name = "provider_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "id")) 
+    private Collection<Role> roles;
 	
 	public Provider(String name, String email, long phoneNumber, String address, String description, double price,
 			long password, List<Provider> providers) {
@@ -55,6 +67,9 @@ public class Provider implements ProviderRepository {
 
 	public long getPassword() {
 		return password;
+	}
+	  public void addRole(Role role) {
+	        this.roles.add(role);
 	}
 
 	public void setPassword(long password) {
@@ -163,9 +178,9 @@ public class Provider implements ProviderRepository {
 
 	@Override
 	public String toString() {
-		return "ServiceProvider [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + ", description=" + description + ", price=" + price + ", providers="
-				+ providers + "]";
+		return "Provider [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", address=" + address + ", description=" + description + ", price=" + price + ", password="
+				+ password + ", roles=" + roles + ", providers=" + providers + "]";
 	}
 	public Provider(String name) {
 		this.name = name;
@@ -354,6 +369,43 @@ public class Provider implements ProviderRepository {
 	public <S extends Provider> long count(Example<S> example) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Provider(int id, String name, String email, long phoneNumber, String address, String description,
+			double price, long password, Collection<Role> roles, List<Provider> providers) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.description = description;
+		this.price = price;
+		this.password = password;
+		this.roles = roles;
+		this.providers = providers;
+	}
+
+	public Provider(String name, String email, long phoneNumber, String address, String description, double price,
+			long password, Collection<Role> roles, List<Provider> providers) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.description = description;
+		this.price = price;
+		this.password = password;
+		this.roles = roles;
+		this.providers = providers;
 	}
 	
 

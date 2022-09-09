@@ -2,22 +2,23 @@ package lt.codeacademy.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 
@@ -28,13 +29,19 @@ public class Client implements UserDetails{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String usernamer;
+	private String username;
 	private String name;
 	private String email;
 	private long phoneNumber;
 	private String password;
-	@Enumerated(EnumType.STRING)
-	private Role clientRole;
+	@ManyToMany 
+    @JoinTable( 
+        name = "clients_roles", 
+        joinColumns = @JoinColumn(
+          name = "client_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "id")) 
+    private Collection<Role> roles;
     
 	
 	@OneToMany( cascade = CascadeType.ALL)
@@ -44,6 +51,17 @@ public class Client implements UserDetails{
 
 	public Client() {
 	
+	}
+	  public void addRole(Role role) {
+	        this.roles.add(role);
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
 	}
 
 	public long getId() {
@@ -95,12 +113,10 @@ public class Client implements UserDetails{
 	}
 
 	public void setUsernamer(String usernamer) {
-		this.usernamer = usernamer;
+		this.username = usernamer;
 	}
 
-	public Role getClientRole() {
-		return clientRole;
-	}
+
 
 	public void setId(long id) {
 		this.id = id;
@@ -110,9 +126,7 @@ public class Client implements UserDetails{
 		this.password = password;
 	}
 
-	public void setClientRole(Role clientRole) {
-		this.clientRole = clientRole;
-	}
+
 
 	public Client(String name, String email, long phoneNumber, List<Client> clients) {
 	
@@ -133,21 +147,13 @@ public class Client implements UserDetails{
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ ", password=" + password + ", clients=" + clients + "]";
+		return "Client [id=" + id + ", usernamer=" + username + ", name=" + name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", password=" + password + ", roles=" + roles + ", clients="
+				+ clients + "]";
 	}
 	
 
-	public Client(String name, String email, long phoneNumber, String password, Role clientRole,
-			List<Client> clients) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.clientRole = clientRole;
-		this.clients = clients;
-	}
+
 
 	public Client(String name, String email, long phoneNumber) {
 	
@@ -167,11 +173,6 @@ public class Client implements UserDetails{
 		this.clients = clients;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(clientRole.name());
-		return Collections.singletonList(authority);
-	}
 
 	@Override
 	public String getPassword() {
@@ -206,6 +207,37 @@ public class Client implements UserDetails{
 
 	@Override
 	public String getUsername() {
+		return null;
+	}
+
+	public Client(String usernamer, String name, String email, long phoneNumber, String password,
+			Collection<Role> roles, List<Client> clients) {
+		super();
+		this.username = usernamer;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.roles = roles;
+		this.clients = clients;
+	}
+
+	public Client(long id, String usernamer, String name, String email, long phoneNumber, String password,
+			Collection<Role> roles, List<Client> clients) {
+		super();
+		this.id = id;
+		this.username = usernamer;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.roles = roles;
+		this.clients = clients;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 	
