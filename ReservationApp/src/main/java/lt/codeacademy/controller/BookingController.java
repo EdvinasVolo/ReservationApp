@@ -41,9 +41,9 @@ public class BookingController {
     }
 	
 	@GetMapping("/all")
-	public String getAllDishes(Model model){
+	public String getAll(Model model){
 		model.addAttribute("client",clientService.getAll());
-		model.addAttribute("hello","Welcome to our restaurant");
+		model.addAttribute("Hello");
 		return "/clients/list";
 	}
 
