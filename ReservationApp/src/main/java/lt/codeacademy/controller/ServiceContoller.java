@@ -82,6 +82,10 @@ public class ServiceContoller {
 	public String reservation(Model model) {
 		return "/index/reservation";
 	}
+	 @GetMapping("/logout")
+	    public String redirectToLogout(){
+	        return "/index/login.html";
+	    }
 	
 }
 //	@PostMapping("/update/{id}")

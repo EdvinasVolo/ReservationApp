@@ -13,4 +13,5 @@ import lt.codeacademy.entity.Client;
 public interface ClientRepository extends JpaRepository <Client, Long>{
 
 	UserDetails findByEmail(String email);
+	Client findByUsername(String username);
 }

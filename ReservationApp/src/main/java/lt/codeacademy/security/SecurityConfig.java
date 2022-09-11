@@ -18,12 +18,11 @@ import lt.codeacademy.service.UserAuthenticationSuccessHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
    
-    public PasswordEncoder passwordEncoder() { 
-        return new BCryptPasswordEncoder(); 
-    }
-    
-    @Autowired
-    PasswordEncoder passwordEncoder;
+		@Bean
+	    public BCryptPasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+
     
     @Autowired
     private UserAuthenticationSuccessHandler successHandler;

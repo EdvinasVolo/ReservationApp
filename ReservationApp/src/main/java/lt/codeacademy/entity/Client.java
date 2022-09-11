@@ -29,12 +29,12 @@ public class Client implements UserDetails{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private String username;
 	private String name;
+	private String username;
 	private String email;
 	private long phoneNumber;
 	private String password;
-	@ManyToMany 
+	@ManyToMany(fetch = FetchType.EAGER, cascade=  CascadeType.ALL)
     @JoinTable( 
         name = "clients_roles", 
         joinColumns = @JoinColumn(
@@ -44,8 +44,8 @@ public class Client implements UserDetails{
     private Collection<Role> roles;
     
 	
-	@OneToMany( cascade = CascadeType.ALL)
-	List<Client> clients = new ArrayList<Client>();
+//	@OneToMany( cascade = CascadeType.ALL)
+//	List<Client> clients = new ArrayList<Client>();
 	
 
 
@@ -98,19 +98,21 @@ public class Client implements UserDetails{
 
 	
 
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
+//	public List<Client> getClients() {
+//		return clients;
+//	}
+//
+//	public void setClients(List<Client> clients) {
+//		this.clients = clients;
+//	}
 
 
 
 	public String getUsernamer() {
 		return email;
 	}
+
+
 
 	public void setUsernamer(String usernamer) {
 		this.username = usernamer;
@@ -133,7 +135,7 @@ public class Client implements UserDetails{
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.clients = clients;
+//		this.clients = clients;
 	}
 
 	public Client(int id, String name, String email, long phoneNumber, List<Client> clients) {
@@ -142,19 +144,29 @@ public class Client implements UserDetails{
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.clients = clients;
+	//	this.clients = clients;
 	}
 
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", usernamer=" + username + ", name=" + name + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", password=" + password + ", roles=" + roles + ", clients="
-				+ clients + "]";
+		return "Client [id=" + id + ", name=" + name + ", username=" + username + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + ", password=" + password + ", roles=" + roles + "]";
 	}
 	
 
 
 
+	public Client(String name, String username, String email, long phoneNumber, String password,
+			Collection<Role> roles) {
+		super();
+		this.name = name;
+		this.username = username;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.roles = roles;
+	}
+	
 	public Client(String name, String email, long phoneNumber) {
 	
 		this.name = name;
@@ -170,7 +182,7 @@ public class Client implements UserDetails{
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
-		this.clients = clients;
+	//	this.clients = clients;
 	}
 
 
@@ -210,20 +222,10 @@ public class Client implements UserDetails{
 		return null;
 	}
 
-	public Client(String usernamer, String name, String email, long phoneNumber, String password,
-			Collection<Role> roles, List<Client> clients) {
-		super();
-		this.username = usernamer;
-		this.name = name;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.roles = roles;
-		this.clients = clients;
-	}
+
 
 	public Client(long id, String usernamer, String name, String email, long phoneNumber, String password,
-			Collection<Role> roles, List<Client> clients) {
+			Collection<Role> roles) {
 		super();
 		this.id = id;
 		this.username = usernamer;
@@ -232,9 +234,16 @@ public class Client implements UserDetails{
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.roles = roles;
-		this.clients = clients;
+
 	}
 
+	public Client(String name, String usernamer, String email, long phoneNumber, String password) {
+		this.username = usernamer;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub

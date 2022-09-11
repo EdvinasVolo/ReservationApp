@@ -12,5 +12,6 @@ public class LoginController {
 	    public String redirectTo(){
 	        return "/index/login.html";
 	    }
+	
 
 }
