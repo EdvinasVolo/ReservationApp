@@ -57,8 +57,14 @@
                         <td th:text="${provider.description}"></td>
                         <td th:text="${provider.price}"></td>
                         <td th:text="${provider.address}"></td>
+             
+
+		<div sec:authorize="hasAuthority('ADMIN')">		
         <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
+      			
+      		
         <td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
+        </div>
         <td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
             </tbody>
           </table>
