@@ -33,7 +33,11 @@ public class ServiceContoller {
 		model.addAttribute("providers", serviceService.findAllProvider());
 		return "/index/Home";	
 	}
-
+	@GetMapping("/show")
+	public String showListAfterLogin(Model model) {
+		model.addAttribute("providers", serviceService.findAllProvider());
+		return "/index/Home";	
+	}
 	
 	@GetMapping("/create")
 	public String showCreateForm(Provider serviceProvider) {

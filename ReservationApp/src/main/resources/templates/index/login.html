@@ -38,17 +38,17 @@
                 <ul id="dTab" class="nav nav-tabs">
                 <!--    <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li> -->  
                     <li><a href="#pane2" data-toggle="tab">Login</a></li>
-<<<<<<< HEAD
+
              <!--       <li><a href="#pane3" data-toggle="tab" >3Tabas</a></li> -->  
-=======
+
                   <!--   <li><a href="#pane3" data-toggle="tab">3Tabas</a></li>--> 
->>>>>>> refs/remotes/origin/main
+
                 </ul>
                 <div class="tab-content">
                     <div id="pane1" class="tab-pane fade in active">
                         <!-- Register Username -->
-                      <!--     <form action="/booking/create" method="POST">
-                          <fieldset>
+                          <form action="/booking/create" method="POST">
+                        <!--   <fieldset>
                                <div class="form-group">
                                     <label class="control-label" for="username">Username</label>
                                     <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers" class="form-control" />
@@ -69,13 +69,13 @@
                                     <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="form-control" />
                                 </div> 
                                 <button type="submit" class="btn btn-success"  >Register</button>
-                            </fieldset>  
+                            </fieldset>  -->
                              <button type="submit" class="btn btn-success"  >Register</button>  
-                        </form>-->
+                        </form>
                     </div>
                     <div id="pane2" class="tab-pane fade">
                         <!-- login -->
-                        <form class="form-signin" th:action="@{/process-login}"  method="POST">
+                        <form  action="/service"  method="GET">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />

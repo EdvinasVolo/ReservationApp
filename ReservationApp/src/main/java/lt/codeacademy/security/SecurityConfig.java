@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import lt.codeacademy.service.UserAuthenticationSuccessHandler;
 
@@ -43,14 +44,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	//.csrf().disable()
         .authorizeRequests() 
         .antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/service/**").hasAnyRole("USER","ADMIN")
-        .antMatchers("/booking/**").hasAnyRole("USER","ADMIN")
+        .antMatchers("/service/**")   .permitAll()
         .anyRequest().permitAll()
         .and()
         .formLogin()
-        .successHandler(successHandler)
+        .permitAll()
+        //.successHandler(successHandler)
         .loginPage("/login")
+        .permitAll()
         .loginProcessingUrl("/process-login")
+        .permitAll()
+        .defaultSuccessUrl("/service", true)
         .permitAll()
         .and()
         .logout().logoutSuccessUrl("/?logout=true")
@@ -61,10 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .disable();
         
         
-       // .loginProcessingUrl("/process-login")
-      //  .defaultSuccessUrl("/service", true)
+        
       //  .permitAll()
       ;
     }
+
 
 }
