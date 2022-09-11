@@ -27,15 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserAuthenticationSuccessHandler successHandler;
     
-	@Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-        .withUser("user1@gmail.com").password(passwordEncoder().encode("user1Pass")).roles("USER")
-        .and()
-        .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
-        .and()
-        .withUser("admin@gmail.com").password(passwordEncoder().encode("12345")).roles("ADMIN");
-    }
+
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
@@ -43,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	//.csrf().disable()
         .authorizeRequests() 
         .antMatchers("/admin/**").hasRole("ADMIN")
-        .antMatchers("/service/**")   .permitAll()
+        .antMatchers("/service").permitAll()
+        .antMatchers("/service/**").permitAll()
         .anyRequest().permitAll()
         .and()
         .formLogin()

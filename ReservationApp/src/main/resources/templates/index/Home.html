@@ -59,18 +59,17 @@
                         <td th:text="${provider.address}"></td>
              
 
-		<div sec:authorize="hasRole('ADMIN')">		
+		
         <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
-      			
+	
       		
         <td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
-        </div>
+  
         <td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
             </tbody>
           </table>
-      <div sec:authorize="hasRole('ADMIN')">
           <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
-         </div>
+        
           <a class="btn btn-primary" th:href="@{/service/logout}">Log Out</a>
         </div>
          
