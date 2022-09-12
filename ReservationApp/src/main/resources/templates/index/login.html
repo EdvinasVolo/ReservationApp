@@ -1,129 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+    <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  `	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Flag CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" type="text/css" /> 
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Translate JS -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+  <!-- Select Box JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js" type="text/javascript"></script>
+ 
+    <script type="text/javascript">
+        function googleTranslateElementInit() 
+    {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+        }
 
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<style>
-.cover {
-    width: 400px;
-    margin: auto;
-}
-.mastfoot {
-    padding-top: 0px;
-    text-align: center;
-    margin: auto;
-}
-</style>
+        function translateLanguage(lang) 
+    {
+            googleTranslateElementInit();
+            var $frame = $('.goog-te-menu-frame:first');
+            if (!$frame.size()) {
+                alert("Error: Could not find Google translate frame.");
+                return false;
+            }
+            $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+            return false;
+        }
 
+        $(function()
+    {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
+    <style>
+       
+    body {
+        background-color: rgb(2, 2, 2);
+    }
+    header {
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 15vh;
+        box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+    }
+    h1 {
+        letter-spacing: 1.5vw;
+        font-family: 'system-ui';
+        text-transform: uppercase;
+        text-align: center;
+    }
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 75vh;
+        width: 100%;
+        background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Mountains-1412683.svg/1280px-Mountains-1412683.svg.png) no-repeat center center;
+        background-size: cover;
+    }
+    .form_class {
+        width: 500px;
+        padding: 40px;
+        border-radius: 8px;
+        background-color: white;
+        font-family: 'system-ui';
+        box-shadow: 5px 5px 10px rgb(0,0,0,0.3);
+    }
+    .form_div {
+        text-transform: uppercase;
+    }
+    .form_div > label {
+        letter-spacing: 3px;
+        font-size: 1rem;
+    }
+    .info_div {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .info_div {
+        letter-spacing: 1px;
+    }
+    .field_class {
+        width: 100%;
+        border-radius: 6px;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px 0px;
+        text-indent: 6px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-family: 'system-ui';
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+    .submit_class {
+        border-style: none;
+        border-radius: 5px;
+        background-color: #FFE6D4;
+        padding: 8px 20px;
+        font-family: 'system-ui';
+        text-transform: uppercase;
+        letter-spacing: .8px;
+        display: block;
+        margin: auto;
+        margin-top: 10px;
+        box-shadow: 2px 2px 5px rgb(0,0,0,0.2);
+        cursor: pointer;
+    }
+    footer {
+        height: 10vh;
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: -5px -5px 10px rgb(0,0,0,0.3);
+    }
+    footer > p {
+        text-align: center;
+        font-family: 'system-ui';
+        letter-spacing: 3px;
+    }
+    footer > p > a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+    </style>
 </head>
 <body>
-<div class="cover-container">
-    <div class="masthead clearfix">
-        <div class="inner">
-            <h3 class="masthead-brand"></h3>
-            <ul class="nav masthead-nav">
-            </ul>
-        </div>
-    </div>
-    <div class="inner cover">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Please Sign Up It's free and always will be.</h3>
-            </div>
-            <div class="panel-body">
-                <!-- tabs -->
-                <ul id="dTab" class="nav nav-tabs">
-                <!--    <li class="active"><a href="#pane1" data-toggle="tab">Register</a></li> -->  
-                    <li><a href="#pane2" data-toggle="tab">Login</a></li>
-
-             <!--       <li><a href="#pane3" data-toggle="tab" >3Tabas</a></li> -->  
-
-                  <!--   <li><a href="#pane3" data-toggle="tab">3Tabas</a></li>--> 
-
-                </ul>
-                <div class="tab-content">
-                    <div id="pane1" class="tab-pane fade in active">
-                        <!-- Register Username -->
-                          <form action="/booking/create" method="POST">
-                        <!--   <fieldset>
-                               <div class="form-group">
-                                    <label class="control-label" for="username">Username</label>
-                                    <input type="text" id="username" name="username" placeholder="Username can contain any letters or numbers" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <!-- E-mail 
-                                    <label class="control-label" for="email">E-mail</label>
-                                    <input type="text" id="email" name="email" placeholder="Please provide your E-mail" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <!-- Password
-                                    <label class="control-label" for="password">Password</label>
-                                    <input type="password" id="password" name="password" placeholder="Password should be at least 4 characters" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <!-- Password 
-                                    <label class="control-label" for="password_confirm">Password (Confirm)</label>
-                                    <input type="password" id="password_confirm" name="password_confirm" placeholder="Please confirm password" class="form-control" />
-                                </div> 
-                                <button type="submit" class="btn btn-success"  >Register</button>
-                            </fieldset>  -->
-                             <button type="submit" class="btn btn-success"  >Register</button>  
-                        </form>
-                    </div>
-                    <div id="pane2" class="tab-pane fade">
-                        <!-- login -->
-                        <form  action="/service"  method="GET">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                            </div>
-                 
-                             
-                            <button type="submit" class="btn btn-success">Log-in</button>
-                            
-
-                            <button type="reset" class="btn btn-success" id="forgetBtn">Forget Password</button>
-                        </form>
-                        <!-- login-ends-->
-                    </div>
-                    <div id="pane3" class="tab-pane fade">
-                        <!-- password forget -->
-                        <form role="form" action="" method="POST">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Request a password reset. Enter your email" />
-                            </div>
-
-                            <button type="reset" class="btn btn-success">Reset Password</button>
-                            <button type="submit" class="btn btn-success" id="loginBtn">Login</button>
-                        </form>
-                        <!-- password forget -->
-                    </div>
+    <body>
+        <header>
+            <h1>Login</h1>
+        </header>
+        <main>
+            <form id="login_form" class="form_class" th:action="@{/process-login}" method="post">
+                <div class="form_div">
+                    <label>Login:</label>
+                    <input class="field_class" name="username" type="text" placeholder="username" autofocus>
+                    <label>Password:</label>
+                    <input id="pass" class="field_class" name="password" type="password" placeholder="password">
+                    <button class="submit_class" type="submit" form="login_form" onclick="return validarLogin()">Login</button>
                 </div>
-            </div>
-        </div>
-    </div>
-<script>
-$(document).ready(function () {
-    $("#forgetBtn").click(function () {
-        $("#dTab li:eq(2) a").tab("show");
-        $(".tab-content div.active").removeClass("active in");
-        $(".tab-content").find("#pane3").addClass("active in");
-    });
-    $("#loginBtn").click(function () {
-        $("#dTab li:eq(1) a").tab("show");
-        $(".tab-content div.active").removeClass("active in");
-        $(".tab-content").find("#pane2").addClass("active in");
-    });
-});
-</script>
-
+                
+            </form>
+        </main>
+        <footer>
+            <p>Reservation APP   <a href="#">COMAND_3&trade;</a></p>
+        </footer>
+    
 </body>
 </html>

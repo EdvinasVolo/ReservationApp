@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;"  xmlns:th="https://www.thymeleaf.org"
-th:with="lang=${#locale.language}" th:lang="${lang}"><head>
+<html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Shared Hosting Plans">
     <meta name="description" content="">
-    <title>Home</title>
+    <title>Reservation</title>
     <link rel="stylesheet" href="CSS/nicepage.css" media="screen">
     <link rel="stylesheet" href="CSS/Home.css" media="screen">
   
     <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  `	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <!-- Translate JS -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+  <!-- Select Box JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js" type="text/javascript"></script>
+ 
+  <!-- Main Script for TranslateElement -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() 
+    {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'google_translate_element');
+        }
+
+        function translateLanguage(lang) 
+    {
+            googleTranslateElementInit();
+            var $frame = $('.goog-te-menu-frame:first');
+            if (!$frame.size()) {
+                alert("Error: Could not find Google translate frame.");
+                return false;
+            }
+            $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+            return false;
+        }
+
+        $(function()
+    {
+            $('.selectpicker').selectpicker();
+        });
+    </script>
     
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -22,33 +56,10 @@ th:with="lang=${#locale.language}" th:lang="${lang}"><head>
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-          $("#locales").change(function () {
-              var selectedOption = $('#locales').val();
-              if (selectedOption != ''){
-                  window.location.replace('i?lang=' + selectedOption);
-              }
-          });
-      });
-      </script>
   </head>
-  <h1 th:text="#{greeting}"></h1>
-<p th:text="#{sometext}"></p>
-
-
-
-<span th:text="#{lang.change}"></span>:
-<select id="locales">
-    <option value=""></option>
-    <option value="en" th:text="#{lang.eng}"></option>
-    <option value="fr" th:text="#{lang.fr}"></option>
-    <option value="lt" th:text="#{lang.lt}"></option>
-    
-</select>
-  <body class="u-body u-xl-mode" data-lang="en"><header class="u-align-center u-clearfix u-header u-shading u-header" id="sec-6064" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
+  <body 
+  
+  class="u-body u-xl-mode" data-lang="en"><header class="u-align-center u-clearfix u-header u-shading u-header" id="sec-6064" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200">
           <img src="CSS/logo.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -56,11 +67,12 @@ th:with="lang=${#locale.language}" th:lang="${lang}"><head>
         <a href="https://nicepage.com" class="u-image u-logo u-image-2" data-image-width="200" data-image-height="200">
           <img src="CSS/logo.png" class="u-logo-image u-logo-image-2">
         </a>
-      </div></header> 
+      </div>
       
+    </header> 
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-a1c0" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+        <div sec:authorize="hasAuthority('ADMIN')"class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <thead>
             <tr>
@@ -84,26 +96,35 @@ th:with="lang=${#locale.language}" th:lang="${lang}"><head>
                         <td th:text="${provider.price}"></td>
                         <td th:text="${provider.address}"></td>
              
+            
+              <td><a class="btn " th:href="/service/create">Add a new Provider</a></td>
+              <td><a class="btn " th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
+            
 
-		
-        <td><a class="btn btn-primary" th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
-	
-      		
-        <td><a class="btn btn-warning" th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
-  
-        <td><a class="btn btn-warning" th:href="@{/service/reservation}">Reserve</a></td>
-            </tbody>
-          </table>
-          <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
+            
+                <td><a class="btn " th:href="@{/service/reservation}">Reserve</a></td>
+              
         
-         
-        </div>
+                
+	
+      		   
+            
+            </tbody>
+            </table>
+            
+            <div sec:authorize="hasAuthority('USER')">
+              <a class="btn " th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a>
+
+            </div>
           <a class="btn btn-primary" th:href="@{/service/logout}">Log Out</a>
+          
+        </div>
+         
             
       
       </div>
 
     </section>
-  
+    
 </body>
 </html>
