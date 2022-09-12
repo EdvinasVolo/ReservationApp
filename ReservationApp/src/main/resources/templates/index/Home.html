@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;" lang="en"><head>
+<html style="font-size: 16px;"  xmlns:th="https://www.thymeleaf.org"
+th:with="lang=${#locale.language}" th:lang="${lang}"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Shared Hosting Plans">
@@ -21,7 +22,32 @@
     <meta name="theme-color" content="#478ac9">
     <meta property="og:title" content="Home">
     <meta property="og:type" content="website">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $("#locales").change(function () {
+              var selectedOption = $('#locales').val();
+              if (selectedOption != ''){
+                  window.location.replace('i?lang=' + selectedOption);
+              }
+          });
+      });
+      </script>
   </head>
+  <h1 th:text="#{greeting}"></h1>
+<p th:text="#{sometext}"></p>
+
+
+
+<span th:text="#{lang.change}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.eng}"></option>
+    <option value="fr" th:text="#{lang.fr}"></option>
+    <option value="lt" th:text="#{lang.lt}"></option>
+    
+</select>
   <body class="u-body u-xl-mode" data-lang="en"><header class="u-align-center u-clearfix u-header u-shading u-header" id="sec-6064" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="200" data-image-height="200">
           <img src="CSS/logo.png" class="u-logo-image u-logo-image-1">
@@ -70,9 +96,9 @@
           </table>
           <a class="btn btn-primary" href="/service/create">Add a new Provider</a>
         
-          <a class="btn btn-primary" th:href="@{/service/logout}">Log Out</a>
-        </div>
          
+        </div>
+          <a class="btn btn-primary" th:href="@{/service/logout}">Log Out</a>
             
       
       </div>
