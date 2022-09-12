@@ -4,16 +4,16 @@ Technologies
 Setup
 
 General info
-This is reservation system. It allows the users to check the available service. 
-It's a training project for Code Academy to learn Java Spring, Html, JS bacis.
+This Booking System is a Spring MVC application developed for Java programing course.
+It allows the users to check the available service.
 This implementation uses Spring Security to manage all the permissions and roles.
-This application is using MySql database.
+This application is using MySQL database.
 
 Technologies
 Java 
 Spring Boot
 Spring Data JPA 
-MySql 
+MySQL 
 HTML 
 JS
 
