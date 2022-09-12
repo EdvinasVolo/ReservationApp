@@ -72,7 +72,7 @@
     </header> 
     <section class="u-align-center u-clearfix u-image u-shading u-section-1" id="sec-a1c0" data-image-width="256" data-image-height="256" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <div sec:authorize="hasAuthority('ADMIN')"class="u-expanded-width u-table u-table-responsive u-table-1">
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <thead>
             <tr>
@@ -95,15 +95,15 @@
                         <td th:text="${provider.description}"></td>
                         <td th:text="${provider.price}"></td>
                         <td th:text="${provider.address}"></td>
-             
+             <div sec:authorize="hasAuthority('ADMIN')">  
             
-              <td><a class="btn " th:href="/service/create">Add a new Provider</a></td>
-              <td><a class="btn " th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
-            
-
-            
-                <td><a class="btn " th:href="@{/service/reservation}">Reserve</a></td>
               
+              
+            </div>
+
+                <td><a class="btn " th:href="@{/service/delete/{id}(id=${provider.id})}">Delete</a></td>
+                <td><a class="btn " th:href="@{/service/reservation}">Reserve</a></td>
+                <td><a class="btn " th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a></td>
         
                 
 	
@@ -113,11 +113,11 @@
             </table>
             
             <div sec:authorize="hasAuthority('USER')">
-              <a class="btn " th:href="@{/service/edit/{id}(id=${provider.id})}">Edit</a>
+              
 
             </div>
           <a class="btn btn-primary" th:href="@{/service/logout}">Log Out</a>
-          
+          <a class="btn " href="/service/create">Add a new Provider</a>
         </div>
          
             
